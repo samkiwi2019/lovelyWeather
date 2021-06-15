@@ -5,15 +5,17 @@
             <v-tab>Temperature</v-tab>
             <v-tab>Last updated</v-tab>
         </v-tabs>
-        <mescroll-vue ref="mescroll" :down="mescrollDown">
-            <List :items="cities" :sort-by="sortBy" />
-        </mescroll-vue>
+        <div class="container-scroll-with-tabs">
+            <ScrollWrapper>
+                <CityList :items="cities" :sort-by="sortBy" />
+            </ScrollWrapper>
+        </div>
     </div>
 </template>
 
 <script>
-import List from '~/components/List.vue';
-import MescrollVue from 'mescroll.js/mescroll.vue';
+import ScrollWrapper from '~/components/ScrollWrapper.vue';
+import CityList from '~/components/CityList.vue';
 import { mapState, mapMutations } from 'vuex';
 export default {
     data() {
@@ -31,8 +33,8 @@ export default {
         };
     },
     components: {
-        List,
-        MescrollVue,
+        CityList,
+        ScrollWrapper,
     },
     computed: {
         ...mapState({
@@ -59,3 +61,8 @@ export default {
     // },
 };
 </script>
+<style lang="scss" scoped>
+.container-scroll-with-tabs {
+    height: calc(100vh - 152px); // header + footer + tabs
+}
+</style>

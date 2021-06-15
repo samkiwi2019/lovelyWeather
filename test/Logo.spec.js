@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Logo from '~/components/List.vue';
+import Logo from '~/components/CityList.vue';
 
 describe('Logo', () => {
     test('is a Vue instance', () => {

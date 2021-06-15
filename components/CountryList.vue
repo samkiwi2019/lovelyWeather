@@ -2,7 +2,7 @@
     <v-card max-width="1024" class="mx-auto">
         <v-container>
             <v-row dense>
-                <v-col v-for="(item, i) in sortedItems" :key="i" cols="12">
+                <v-col v-for="item in sortedItems" :key="item._venueID" cols="12">
                     <v-card :color="color(item._weatherTemp)" dark>
                         <div class="d-flex flex-no-wrap justify-space-between">
                             <div>
@@ -36,6 +36,7 @@
 import * as R from 'ramda';
 
 export default {
+    name: 'country-list',
     props: {
         items: {
             required: true,
@@ -49,7 +50,7 @@ export default {
     computed: {
         sortedItems() {
             const items = R.clone(this.items);
-            // alphabet temperature updatedAt
+            // alphabet || temperature || updatedAt
             if (this.sortBy === 'temperature') {
                 return items.sort((a, b) => a._weatherTemp - b._weatherTemp);
             }
