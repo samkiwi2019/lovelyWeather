@@ -6,7 +6,7 @@
             <v-tab>Last updated</v-tab>
         </v-tabs>
         <mescroll-vue ref="mescroll" :down="mescrollDown">
-            <List />
+            <List :items="cities" />
         </mescroll-vue>
     </div>
 </template>
@@ -36,7 +36,7 @@ export default {
     },
     computed: {
         ...mapState({
-            test: state => state.weather.items,
+            cities: state => state.weather.cities,
         }),
     },
     // server side request

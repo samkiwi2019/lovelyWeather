@@ -2,54 +2,25 @@
     <v-card max-width="1024" class="mx-auto">
         <v-container>
             <v-row dense>
-                <v-col cols="12">
-                    <v-card color="#385F73" dark>
-                        <v-card-title class="text-h5">
-                            Unlimited music now
-                        </v-card-title>
-
-                        <v-card-subtitle
-                            >Listen to your favorite artists and albums whenever and wherever,
-                            online and offline.</v-card-subtitle
-                        >
-
-                        <v-card-actions>
-                            <v-btn text>
-                                Listen Now
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-col>
-
                 <v-col v-for="(item, i) in items" :key="i" cols="12">
-                    <v-card :color="item.color" dark>
+                    <v-card :color="color(item._weatherTemp)" dark>
                         <div class="d-flex flex-no-wrap justify-space-between">
                             <div>
-                                <v-card-title class="text-h5" v-text="item.title"></v-card-title>
+                                <v-card-title class="text-h5" v-text="item._name"></v-card-title>
 
-                                <v-card-subtitle v-text="item.artist"></v-card-subtitle>
+                                <v-card-subtitle v-text="item._weatherCondition"></v-card-subtitle>
 
                                 <v-card-actions>
-                                    <v-btn
-                                        v-if="item.artist === 'Ellie Goulding'"
-                                        class="ml-2 mt-3"
-                                        fab
-                                        icon
-                                        height="40px"
-                                        right
-                                        width="40px"
-                                    >
-                                        <v-icon>mdi-play</v-icon>
-                                    </v-btn>
-
-                                    <v-btn v-else class="ml-2 mt-5" outlined rounded small>
-                                        START RADIO
-                                    </v-btn>
+                                    <v-btn text><span v-text="item._country._name"></span></v-btn>
                                 </v-card-actions>
                             </div>
 
                             <v-avatar class="ma-3" size="125" tile>
-                                <v-img :src="item.src"></v-img>
+                                <span
+                                    class="white--text text-h2 font-weight-bold"
+                                    v-text="item._weatherTemp"
+                                ></span
+                                ><span class="white--text text-h5">℃</span>
                             </v-avatar>
                         </div>
                     </v-card>
@@ -60,93 +31,27 @@
 </template>
 <script>
 export default {
-    data: () => ({
-        items: [
-            {
-                color: '#1F7087',
-                src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
-                title: 'Supermodel',
-                artist: 'Foster the People',
-            },
-            {
-                color: '#952175',
-                src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-                title: 'Halcyon Days',
-                artist: 'Ellie Goulding',
-            },
-            {
-                color: '#1F7087',
-                src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
-                title: 'Supermodel',
-                artist: 'Foster the People',
-            },
-            {
-                color: '#952175',
-                src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-                title: 'Halcyon Days',
-                artist: 'Ellie Goulding',
-            },
-            {
-                color: '#1F7087',
-                src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
-                title: 'Supermodel',
-                artist: 'Foster the People',
-            },
-            {
-                color: '#952175',
-                src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-                title: 'Halcyon Days',
-                artist: 'Ellie Goulding',
-            },
-            {
-                color: '#1F7087',
-                src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
-                title: 'Supermodel',
-                artist: 'Foster the People',
-            },
-            {
-                color: '#952175',
-                src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-                title: 'Halcyon Days',
-                artist: 'Ellie Goulding',
-            },
-            {
-                color: '#1F7087',
-                src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
-                title: 'Supermodel',
-                artist: 'Foster the People',
-            },
-            {
-                color: '#952175',
-                src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-                title: 'Halcyon Days',
-                artist: 'Ellie Goulding',
-            },
-            {
-                color: '#1F7087',
-                src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
-                title: 'Supermodel',
-                artist: 'Foster the People',
-            },
-            {
-                color: '#952175',
-                src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-                title: 'Halcyon Days',
-                artist: 'Ellie Goulding',
-            },
-            {
-                color: '#1F7087',
-                src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
-                title: 'Supermodel',
-                artist: 'Foster the People',
-            },
-            {
-                color: '#952175',
-                src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-                title: 'Halcyon Days',
-                artist: 'Ellie Goulding',
-            },
-        ],
-    }),
+    props: {
+        items: {
+            required: true,
+            type: Array,
+        },
+    },
+    methods: {
+        color(temperature) {
+            if (+temperature < 10) {
+                return '#1F7087';
+            }
+            if (+temperature >= 10 && +temperature < 20) {
+                return '#4CAF50';
+            }
+            if (+temperature >= 20 && +temperature < 25) {
+                return '#FF9800';
+            }
+            if (+temperature >= 25) {
+                return '#952175';
+            }
+        },
+    },
 };
 </script>

@@ -14,10 +14,16 @@ const createStore = () => {
             // 1. first screen
             // 2. users refreshed their browser.
             async nuxtServerInit({ dispatch }) {
-                const {
-                    data: { data },
-                } = await getWeatherItems();
-                dispatch('weather/convertData', data);
+                try {
+                    const {
+                        data: { data },
+                    } = await getWeatherItems();
+                    if (data.length) {
+                        dispatch('weather/convertData', data);
+                    }
+                } catch (error) {
+                    console.log('nuxtServerInit error ==>', error);
+                }
             },
         },
     });
