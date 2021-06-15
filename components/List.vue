@@ -12,6 +12,9 @@
 
                                 <v-card-actions>
                                     <v-btn text><span v-text="item._country._name"></span></v-btn>
+                                    <v-btn text disabled
+                                        ><span v-text="formatDate(item._weatherLastUpdated)"></span
+                                    ></v-btn>
                                 </v-card-actions>
                             </div>
 
@@ -51,7 +54,7 @@ export default {
                 return items.sort((a, b) => a._weatherTemp - b._weatherTemp);
             }
             if (this.sortBy === 'updatedAt') {
-                return items.sort((a, b) => a._weatherLastUpdated - b._weatherLastUpdated);
+                return items.sort((a, b) => b._weatherLastUpdated - a._weatherLastUpdated);
             }
 
             // alphabet
@@ -72,6 +75,10 @@ export default {
 
             // >= 25
             return '#952175';
+        },
+        formatDate(date) {
+            const time = new Date(date * 1000);
+            return `${time.toLocaleDateString()}  ${time.toLocaleTimeString()}`;
         },
     },
 };
