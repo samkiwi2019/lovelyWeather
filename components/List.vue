@@ -2,7 +2,7 @@
     <v-card max-width="1024" class="mx-auto">
         <v-container>
             <v-row dense>
-                <v-col v-for="(item, i) in items" :key="i" cols="12">
+                <v-col v-for="(item, i) in sortedItems" :key="i" cols="12">
                     <v-card :color="color(item._weatherTemp)" dark>
                         <div class="d-flex flex-no-wrap justify-space-between">
                             <div>
@@ -30,11 +30,32 @@
     </v-card>
 </template>
 <script>
+import * as R from 'ramda';
+
 export default {
     props: {
         items: {
             required: true,
             type: Array,
+        },
+        sortBy: {
+            required: true,
+            type: String,
+        },
+    },
+    computed: {
+        sortedItems() {
+            const items = R.clone(this.items);
+            // alphabet temperature updatedAt
+            if (this.sortBy === 'temperature') {
+                return items.sort((a, b) => a._weatherTemp - b._weatherTemp);
+            }
+            if (this.sortBy === 'updatedAt') {
+                return items.sort((a, b) => a._weatherLastUpdated - b._weatherLastUpdated);
+            }
+
+            // alphabet
+            return items;
         },
     },
     methods: {
@@ -48,9 +69,9 @@ export default {
             if (+temperature >= 20 && +temperature < 25) {
                 return '#FF9800';
             }
-            if (+temperature >= 25) {
-                return '#952175';
-            }
+
+            // >= 25
+            return '#952175';
         },
     },
 };

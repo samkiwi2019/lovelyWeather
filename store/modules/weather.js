@@ -4,6 +4,7 @@ const state = {
     cities: [],
     countries: [],
     weatherTypes: [],
+    sortBy: 'alphabet', // temperature updatedAt
 };
 
 const getters = {};
@@ -43,6 +44,9 @@ const mutations = {
     },
     SET_WEATHERTYPES(state, payload) {
         state.weatherTypes = payload;
+    },
+    SET_SORTBY(state, payload) {
+        state.sortBy = payload;
     },
 };
 
