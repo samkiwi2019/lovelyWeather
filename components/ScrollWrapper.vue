@@ -43,6 +43,16 @@ const THRESHOLD = 70;
 const STOP = 56;
 
 export default {
+    props: {
+        pullDownHandle: {
+            type: Function,
+            default: () => {},
+        },
+        pullUpHandle: {
+            type: Function,
+            default: () => {},
+        },
+    },
     data() {
         return {
             beforePullDown: true,
@@ -72,8 +82,9 @@ export default {
         async pullingUpHandler() {
             this.isPullUpLoad = true;
 
-            // await this.requestData();
+            await this.pullUpHandle();
 
+            // Mock requesting more data
             setTimeout(() => {
                 this.bscroll.finishPullUp();
                 this.bscroll.refresh();
@@ -84,7 +95,7 @@ export default {
             this.beforePullDown = false;
             this.isPullingDown = true;
 
-            // await this.requestData();
+            await this.pullDownHandle();
 
             this.isPullingDown = false;
             this.finishPullDown();

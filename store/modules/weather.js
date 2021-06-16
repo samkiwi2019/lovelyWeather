@@ -1,10 +1,10 @@
 import * as R from 'ramda';
-
+import { getWeatherItems } from '~/api/weather';
 const state = {
     cities: [],
     countries: [],
     weatherTypes: [],
-    sortBy: 'alphabet', // temperature updatedAt
+    sortBy: 'alphabet', // alphabet || temperature || updatedAt
 };
 
 const getters = {};
@@ -32,6 +32,22 @@ const actions = {
         commit('SET_CITIES', cities);
         commit('SET_COUNTRIES', countries);
         commit('SET_WEATHERTYPES', weatherTypes);
+    },
+
+    // The function might have been called in both server side and client side.
+    // server side  ==> init in nuxtServerInit function.
+    // client side  ==> update when users pull down the list.
+    async getCitiesWeather({ dispatch }) {
+        try {
+            const {
+                data: { data },
+            } = await getWeatherItems(); // this endpoind doesn't configure CORS policy, So, in the client, to request the api will get an CORS error.
+            if (data.length) {
+                dispatch('convertData', data);
+            }
+        } catch (error) {
+            console.log('getCitiesWeather error ==>', error);
+        }
     },
 };
 
