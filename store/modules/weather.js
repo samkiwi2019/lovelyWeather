@@ -23,6 +23,7 @@ const actions = {
      * @param {Array} payload  cities with weather info
      */
     convertData({ commit }, payload) {
+        console.time('covert');
         // sorted by A-Z and removed items that have no weather condition
         const cities = payload
             .filter(x => x._weatherCondition && x._weatherTemp)
@@ -54,6 +55,7 @@ const actions = {
         commit('SET_CITIES', cities);
         commit('SET_COUNTRIES', countries);
         commit('SET_WEATHERTYPES', weatherTypes);
+        console.timeEnd('covert');
     },
 
     // The function might have been called in both server side and client side.

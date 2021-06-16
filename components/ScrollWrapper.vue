@@ -74,6 +74,8 @@ export default {
                     threshold: THRESHOLD,
                     stop: STOP,
                 },
+                click: true,
+                tap: true,
             });
 
             this.bscroll.on('pullingDown', this.pullingDownHandler);
