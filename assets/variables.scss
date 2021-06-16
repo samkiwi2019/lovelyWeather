@@ -11,3 +11,8 @@
 .page-leave-active {
     opacity: 0;
 }
+
+// fixed v-bottom-navigation ui bug
+.v-item-group.v-bottom-navigation .v-btn.v-size--default {
+    height: inherit;
+}

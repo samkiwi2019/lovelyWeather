@@ -3,16 +3,16 @@
         <div class="main-container">
             <nuxt />
         </div>
-        <v-bottom-navigation :value="value" color="primary" fixed>
-            <v-btn to="/country" nuxt value="/country">
+        <v-bottom-navigation :value="value" color="primary" dark fixed>
+            <v-btn to="/country" nuxt value="/country" color="#2e2e2e">
                 <span>Filter By Country </span>
                 <v-icon>mdi-map-search</v-icon>
             </v-btn>
-            <v-btn to="/" nuxt value="/">
+            <v-btn to="/" nuxt value="/" color="#2e2e2e">
                 <span>Home</span>
                 <v-icon>mdi-home</v-icon>
             </v-btn>
-            <v-btn to="/weatherCondition" nuxt value="/weatherCondition">
+            <v-btn to="/weatherCondition" nuxt value="/weatherCondition" color="#2e2e2e">
                 <span>Filter By Weather</span>
                 <v-icon>mdi-weather-windy-variant</v-icon>
             </v-btn>
