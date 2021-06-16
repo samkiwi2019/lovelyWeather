@@ -6,15 +6,18 @@
                     <v-card :color="color(item._weatherTemp)" dark>
                         <div class="d-flex flex-no-wrap justify-space-between">
                             <div>
-                                <v-card-title class="text-h5" v-text="item._name"></v-card-title>
+                                <v-card-title
+                                    class="text-h5 text-no-wrap"
+                                    v-text="item._name"
+                                ></v-card-title>
 
-                                <v-card-subtitle v-text="item._weatherCondition"></v-card-subtitle>
+                                <v-card-subtitle class="d-flex flex-column">
+                                    <span v-text="item._weatherCondition"></span>
+                                    <span v-text="formatDate(item._weatherLastUpdated)"></span
+                                ></v-card-subtitle>
 
                                 <v-card-actions>
                                     <v-btn text><span v-text="item._country._name"></span></v-btn>
-                                    <v-btn text disabled
-                                        ><span v-text="formatDate(item._weatherLastUpdated)"></span
-                                    ></v-btn>
                                 </v-card-actions>
                             </div>
 

@@ -6,7 +6,10 @@
                     <v-card color="#4CAF50" dark>
                         <div class="d-flex flex-no-wrap justify-space-between">
                             <div class="ml-5">
-                                <v-card-title class="text-h5" v-text="item._name"></v-card-title>
+                                <v-card-title
+                                    class="text-h5 text-no-wrap"
+                                    v-text="item._name"
+                                ></v-card-title>
                                 <v-card-actions class="mt-10 ml-2">
                                     <v-btn outlined @click="handleActions(item._countryID)"
                                         ><span>see all cities</span></v-btn
@@ -14,7 +17,7 @@
                                 </v-card-actions>
                             </div>
 
-                            <v-avatar class="ma-3" size="160" tile>
+                            <v-avatar class="ma-3" size="140" tile>
                                 <span
                                     class="white--text text-h3 font-weight-bold"
                                     v-text="item.count"

@@ -6,12 +6,15 @@ module.exports = {
         '^vue$': 'vue/dist/vue.common.js',
     },
     moduleFileExtensions: ['js', 'vue', 'json'],
-    testEnvironment: 'jsdom',
     transform: {
         '^.+\\.js$': 'babel-jest',
         '.*\\.(vue)$': 'vue-jest',
     },
     collectCoverage: true,
-    collectCoverageFrom: ['<rootDir>/store/**/*.(vue|js)'],
+    collectCoverageFrom: [
+        '<rootDir>/components/**/*.vue',
+        '<rootDir>/pages/**/*.vue',
+        '<rootDir>/store/**/*.(vue|js)',
+    ],
     forceExit: !!process.env.CI, // almost every CI platform sets this by default
 };

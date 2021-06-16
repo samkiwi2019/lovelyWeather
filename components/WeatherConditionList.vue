@@ -7,7 +7,7 @@
                         <div class="d-flex flex-no-wrap justify-space-between">
                             <div class="ml-5">
                                 <v-card-title
-                                    class="text-h5"
+                                    class="text-h5 text-no-wrap"
                                     v-text="item.condition"
                                 ></v-card-title>
                                 <v-card-actions class="mt-10 ml-2">
@@ -16,7 +16,7 @@
                                     >
                                 </v-card-actions>
                             </div>
-                            <v-avatar class="ma-3" size="160" tile>
+                            <v-avatar class="my-3" size="140" tile>
                                 <span
                                     class="white--text text-h3 font-weight-bold"
                                     v-text="item.count"
