@@ -5,9 +5,9 @@
                 <v-col v-for="(item, index) in items" :key="index" cols="12">
                     <v-card color="#1F7087" dark>
                         <div class="d-flex flex-no-wrap justify-space-between">
-                            <div class="ml-5">
+                            <div>
                                 <v-card-title
-                                    class="text-h5 text-no-wrap"
+                                    class="text-h6 text-no-wrap"
                                     v-text="item.condition"
                                 ></v-card-title>
                                 <v-card-actions class="mt-10 ml-2">
