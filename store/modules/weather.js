@@ -26,7 +26,13 @@ const actions = {
         // classified by country id
         const countries = R.uniqBy(
             x => x._countryID,
-            cities.map(x => x._country).sort((a, b) => a._name - b._name)
+            cities
+                .map(x => ({
+                    ...x._country,
+                    count: cities.filter(item => item._country._countryID === x._country._countryID) // get number of cities for curr country
+                        .length,
+                }))
+                .sort((a, b) => a._name - b._name)
         );
         // classified by weather condition and removed invalid value
         const weatherTypes = [
