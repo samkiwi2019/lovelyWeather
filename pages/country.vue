@@ -1,7 +1,7 @@
 <template>
     <div class="container-scroll-standard">
         <ScrollWrapper :pull-down-handle="getCitiesWeather">
-            <CountryList :items="countries" :sort-by="sortBy" :handle-actions="searchByCountry" />
+            <CountryList :items="countries" :handle-actions="searchByCountry" />
         </ScrollWrapper>
     </div>
 </template>
@@ -14,9 +14,7 @@ export default {
     components: { ScrollWrapper, CountryList },
     computed: {
         ...mapState({
-            cities: state => state.weather.cities,
             countries: state => state.weather.countries,
-            sortBy: state => state.weather.sortBy,
         }),
     },
     methods: {

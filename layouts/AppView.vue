@@ -4,18 +4,16 @@
             <nuxt />
         </div>
         <v-bottom-navigation :value="value" color="primary" fixed>
+            <v-btn to="/country" nuxt value="/country">
+                <span>Filter By Country </span>
+                <v-icon>mdi-history</v-icon>
+            </v-btn>
             <v-btn to="/" nuxt value="/">
                 <span>Home</span>
                 <v-icon>mdi-history</v-icon>
             </v-btn>
-
-            <v-btn to="/country" nuxt value="/country">
-                <span>Country</span>
-                <v-icon>mdi-history</v-icon>
-            </v-btn>
-
             <v-btn to="/weatherCondition" nuxt value="/weatherCondition">
-                <span>Weather Condition</span>
+                <span>Filter By Weather</span>
                 <v-icon>mdi-heart</v-icon>
             </v-btn>
         </v-bottom-navigation>
