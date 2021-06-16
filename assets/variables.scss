@@ -16,3 +16,10 @@
 .v-item-group.v-bottom-navigation .v-btn.v-size--default {
     height: inherit;
 }
+
+.container-scroll-standard {
+    height: calc(100vh - 120px); //header 48   footer 56  = 104
+}
+.container-scroll-with-tabs {
+    height: calc(100vh - 168px); // header + footer + tabs
+}

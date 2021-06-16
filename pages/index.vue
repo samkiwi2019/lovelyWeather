@@ -44,8 +44,3 @@ export default {
     },
 };
 </script>
-<style lang="scss" scoped>
-.container-scroll-with-tabs {
-    height: calc(100vh - 152px); // header + footer + tabs
-}
-</style>

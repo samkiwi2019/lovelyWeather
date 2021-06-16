@@ -36,6 +36,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container-scroll-standard {
-    height: calc(100vh - 104px); //header 48   footer 56
+    height: calc(100vh - 120px); //header 48   footer 56
 }
 </style>
