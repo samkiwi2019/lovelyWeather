@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  nextjs:
+  nuxtjs:
     build: ./
     ports:
       - "4321:3000"
