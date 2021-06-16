@@ -35,9 +35,16 @@ const actions = {
                 .sort((a, b) => a._name - b._name)
         );
         // classified by weather condition and removed invalid value
-        const weatherTypes = [
-            ...new Set(cities.map(x => x._weatherCondition).sort((a, b) => a - b)),
-        ];
+        const weatherTypes = R.uniqBy(
+            x => x.condition,
+            cities
+                .map(x => ({
+                    condition: x._weatherCondition,
+                    count: cities.filter(item => item._weatherCondition === x._weatherCondition)
+                        .length,
+                }))
+                .sort((a, b) => a.condition - b.condition)
+        );
 
         commit('SET_CITIES', cities);
         commit('SET_COUNTRIES', countries);
