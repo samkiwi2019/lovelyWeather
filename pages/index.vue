@@ -7,7 +7,7 @@
         </v-tabs>
         <div class="container-scroll-with-tabs">
             <ScrollWrapper :pull-down-handle="getCitiesWeather">
-                <CityList :items="cities" :sort-by="sortBy" />
+                <CityList :items="cities" :sort-by="sortBy" :filter-by="filterBy" />
             </ScrollWrapper>
         </div>
     </div>
@@ -26,6 +26,7 @@ export default {
         ...mapState({
             cities: state => state.weather.cities,
             sortBy: state => state.weather.sortBy,
+            filterBy: state => state.weather.filterBy,
         }),
     },
     methods: {

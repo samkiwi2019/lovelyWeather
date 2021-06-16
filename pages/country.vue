@@ -1,12 +1,12 @@
 <template>
     <div class="container-scroll-standard">
-        <ScrollWrapper>
-            <CountryList :items="cities" :sort-by="sortBy" />
+        <ScrollWrapper :pull-down-handle="getCitiesWeather">
+            <CountryList :items="countries" :sort-by="sortBy" :handle-actions="searchByCountry" />
         </ScrollWrapper>
     </div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 import ScrollWrapper from '~/components/ScrollWrapper.vue';
 import CountryList from '~/components/CountryList.vue';
 export default {
@@ -15,8 +15,24 @@ export default {
     computed: {
         ...mapState({
             cities: state => state.weather.cities,
+            countries: state => state.weather.countries,
             sortBy: state => state.weather.sortBy,
         }),
+    },
+    methods: {
+        ...mapMutations({
+            setFilterBy: 'weather/SET_FILTERBY',
+        }),
+        ...mapActions({
+            getCitiesWeather: 'weather/getCitiesWeather',
+        }),
+        searchByCountry(countryId) {
+            this.setFilterBy({
+                type: 'countryId',
+                value: countryId,
+            });
+            this.$router.push('/');
+        },
     },
 };
 </script>

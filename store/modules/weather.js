@@ -5,6 +5,10 @@ const state = {
     countries: [],
     weatherTypes: [],
     sortBy: 'alphabet', // alphabet || temperature || updatedAt
+    filterBy: {
+        type: '', // countryId || weatherTypes
+        value: '', // id || name
+    },
 };
 
 const getters = {};
@@ -41,7 +45,7 @@ const actions = {
         try {
             const {
                 data: { data },
-            } = await getWeatherItems(); // this endpoind doesn't configure CORS policy, So, in the client, to request the api will get an CORS error.
+            } = await getWeatherItems(); // this endpoint doesn't configure CORS policy, So, in the client, to request the api will get an CORS error.
             if (data.length) {
                 dispatch('convertData', data);
             }
@@ -63,6 +67,9 @@ const mutations = {
     },
     SET_SORTBY(state, payload) {
         state.sortBy = payload;
+    },
+    SET_FILTERBY(state, payload) {
+        state.filterBy = payload;
     },
 };
 

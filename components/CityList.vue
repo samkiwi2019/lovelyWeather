@@ -2,7 +2,7 @@
     <v-card max-width="1024" class="mx-auto">
         <v-container>
             <v-row dense>
-                <v-col v-for="item in sortedItems" :key="item._venueID" cols="12">
+                <v-col v-for="item in filteredItems" :key="item._venueID" cols="12">
                     <v-card :color="color(item._weatherTemp)" dark>
                         <div class="d-flex flex-no-wrap justify-space-between">
                             <div>
@@ -46,6 +46,10 @@ export default {
             required: true,
             type: String,
         },
+        filterBy: {
+            required: true,
+            type: Object,
+        },
     },
     computed: {
         sortedItems() {
@@ -60,6 +64,19 @@ export default {
 
             // alphabet
             return items;
+        },
+        // based on sorted items.
+        filteredItems() {
+            if (R.isEmpty(this.filterBy.value)) return this.sortedItems;
+            const items = R.clone(this.sortedItems);
+            let func = x => x;
+            if (this.filterBy.type === 'countryId') {
+                func = x => x._country._countryID === this.filterBy.value;
+            }
+            if (this.filterBy.type === 'weatherTypes') {
+                func = x => x._weatherCondition === this.filterBy.value;
+            }
+            return items.filter(func);
         },
     },
     methods: {
