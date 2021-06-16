@@ -1,0 +1,23 @@
+[
+  {
+    "name": "country",
+    "path": "/country",
+    "component": "/Users/liubin/vue-space/lovelyWeather/pages/country.vue",
+    "chunkName": "pages/country",
+    "_name": "_030d1519"
+  },
+  {
+    "name": "weatherCondition",
+    "path": "/weatherCondition",
+    "component": "/Users/liubin/vue-space/lovelyWeather/pages/weatherCondition.vue",
+    "chunkName": "pages/weatherCondition",
+    "_name": "_1c035dd8"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/liubin/vue-space/lovelyWeather/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_25ac6715"
+  }
+]

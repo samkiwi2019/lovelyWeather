@@ -1,6 +1,7 @@
 import * as R from 'ramda';
 import { getWeatherItems } from '~/api/weather';
-const state = {
+
+const state = () => ({
     cities: [],
     countries: [],
     weatherTypes: [],
@@ -9,9 +10,13 @@ const state = {
         type: '', // countryId || weatherTypes
         value: '', // id || name
     },
-};
+});
 
-const getters = {};
+const getters = {
+    cities: state => state.cities,
+    sortBy: state => state.sortBy,
+    filterBy: state => state.filterBy,
+};
 
 const actions = {
     /**

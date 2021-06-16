@@ -16,17 +16,17 @@
 <script>
 import ScrollWrapper from '~/components/ScrollWrapper.vue';
 import CityList from '~/components/CityList.vue';
-import { mapState, mapMutations, mapActions } from 'vuex';
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex';
 export default {
     components: {
         CityList,
         ScrollWrapper,
     },
     computed: {
-        ...mapState({
-            cities: state => state.weather.cities,
-            sortBy: state => state.weather.sortBy,
-            filterBy: state => state.weather.filterBy,
+        ...mapGetters({
+            cities: 'weather/cities',
+            sortBy: 'weather/sortBy',
+            filterBy: 'weather/filterBy',
         }),
     },
     methods: {
